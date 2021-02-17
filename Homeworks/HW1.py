@@ -6,26 +6,31 @@
 import random
 import time
 random.seed()
-primes=[]
 randoms=[]
 count=0
 i=0
+#This while keeps going until it finds 9 random prime numbers.
 
 while i<9:
-    flag=False
+    flag=False #This flag is false every iteration
     randoms.append(random.randint(0,1000))
     for a in range(2,randoms[i]):
         if((randoms[i]%a)==0):
             count=count+1
-            flag=True
+            flag=True #Becomes true if this number can be divided to some number below it
+            
             
         
         
     i=i+1
     if(flag):
         i=i-1
-        print(count,randoms[i],a,"Not Found")
-        randoms.pop()
+        print(count,randoms[i],a,"Not Found") #For checking the iteration.
+        randoms.pop() #If flag is true then the last element is not a prime number so this code removes it.
+cntr=1
 for x in randoms:
     print(x,end=" ")
+    if(cntr%3==0):
+        print("\n")
+    cntr=cntr+1
     
