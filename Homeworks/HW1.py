@@ -13,7 +13,7 @@ i=0
 
 while i<9:
     flag=False #This flag is false every iteration
-    randoms.append(random.randint(0,1000))
+    randoms.append(random.randint(0,100))
     for a in range(2,randoms[i]):
         if((randoms[i]%a)==0):
             count=count+1
