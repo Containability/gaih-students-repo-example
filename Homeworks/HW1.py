@@ -25,12 +25,12 @@ while i<9:
     i=i+1
     if(flag):
         i=i-1
-        print(count,randoms[i],a,"Not Found") #For checking the iteration.
+       # print(count,randoms[i],a,"Not Found") #For checking the iteration.
         randoms.pop() #If flag is true then the last element is not a prime number so this code removes it.
 cntr=1
 for x in randoms:
-    print(x,end=" ")
+    print(x,end=" ")#elements
     if(cntr%3==0):
-        print("\n")
+        print("\n")#In every 3 iteration this will print out the elements to the next line
     cntr=cntr+1
     
