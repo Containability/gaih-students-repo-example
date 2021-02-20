@@ -44,11 +44,11 @@ class man():
                 else:
                     print("Üzgünüm yanlış harf :(")
                     hak=hak-1
-                   # except:
-                   #     if(x==0):
-                   #         print("Üzgünüm yanlış harf :(")
-                   #         hak=hak-1
-                   #     break
+                   
+                     
+                         
+                            
+                       
             
             
         if hak==0:      
