@@ -9,35 +9,35 @@ class man():
     
         guesses=[]
         for _ in range(len(secret)):
-            guesses.append("_")
+            guesses.append("_")             #Kelime boşluk şeklinde basılır kullanıcının kullandığı tahta oluşturulur
         print(guesses[:])
     
-        hak=6 #Adam asmacada 6 hak vardır
-        success=0
-        succesful=[]
-        indexes=[]
-        indexes.append(0)
+        hak=6               #Adam asmacada 6 yanlış yapma hakkı vardır.
+        success=0           #Kaç kere bildiğini tutar
+        succesful=[]            #Bildiklerini tutar
+        indexes=[]               #Bilinenlerin indexlerinden sonraki index'e geçer(Daha iyi açıklaması aşağıda)
+        indexes.append(0)           #İlk index 0 ile başlatılır (Çünkü aşağıdaki if(*****) için indexes[0] her koşulda 0 olmalı
         
-        while hak>0 and success<(len(secret)):
+        while hak>0 and success<(len(secret)):        #While başlar hak bitene veya kelime bilinene kadar devam eder.
             counter=0
     
             print(guesses)
-            guess=str(input(f'Kalan hakkınız:{hak} Lütfen tahmin harfinizi yazınız'))
-            if(guess in succesful):
+            guess=str(input(f'Kalan hakkınız:{hak} Lütfen tahmin harfinizi yazınız'))    #input harf olarak alınır.
+            if(guess in succesful):                                          #Eğer daha önce yazıldıysa while döngüsü başa döner
                 print("Tekrar dene, bunu daha önce yazdın!")
                 continue
-            else:
-                if(guess in secret):
-                    for x in range(secret.count(guess)):
+            else:  
+                if(guess in secret):        #Eğer tahmin edilen bilindiyse
+                    for x in range(secret.count(guess)):    # Tahmin edilen harf kelimede kaç kere tekrarlıyorsa o kadar döngü olur, bu sayede aşağıdaki kod bulunan her konuma harf'i yerleştirir
                     
-                        if guess in secret and guess==secret[secret.index(guess,indexes[x],len(secret))]:
-                            guesses.insert(secret.index(guess,indexes[x],len(secret)),guess)
-                            del guesses[(secret.index(guess,secret.index(guess)+indexes[x],len(secret)))+1]
+                        if  guess==secret[secret.index(guess,indexes[x],len(secret))]:  # ****** Burdaki koşulumuz tahminin (guess) gizli kelime (secret) ın içinde ise bulunması ve tekrar etme durumu için index metodu ile indexes[] listemi kullanarak her birinin konumunu ayrı ayrı bulmasını sağlamak
+                            guesses.insert(secret.index(guess,indexes[x],len(secret)),guess)  #Burada bulmaya çalıştığımız kelimedeki harfin bulunduğu index'e koyar, indexes[] ise aynı yere değil her seferinde son bulunan indexten sonraki harfler içinde o harfin bulunmasını sağlar(Eğer bunu yapmazsam her seferinde ilk bulduğu harfe gider ve eğer bir kelimede 1 den fazla kere tekrar ediyorsa tekrar tekrar aynı yere harfi koyar.
+                            del guesses[(secret.index(guess,secret.index(guess)+indexes[x],len(secret)))+1] # olan boşluk her seferinde bir sonraki indexe kayacağından o boşluk silinir
                             print("Harika! bir harf buldun")
-                            success=success+1
+                            success=success+1   
                             succesful.append(guess)
-                            indexes.append(secret.index(guess,indexes[x],len(secret))+1)
-                            if secret.index(guess)==0 and counter==0:
+                            indexes.append(secret.index(guess,indexes[x],len(secret))+1)    #Burada da bulunan harfin index'inden sonraki index indexes[] a koyulur. Bu sayede for döngüsü dönerken bir hafıza oluşturulur ve her tekrarlayan harf durumunda son bulunandan sonraki harflerde arama yapılır. Örnek araba'da 0 indexestedir sonra indexes'a 1 eklenir: indexes[0,1], sonra for döngüsündeki iterasyon 1 dir indexes[1] de 1 vardır ve araba kelimesinde r ve sonrasındaki harflerdeki ilk a aranır.Aynısı bir iterasyon daha tekrarlanır indexes[0,1,3] olur ve harfler yerleşmiş olur
+                            if secret.index(guess)==0 and counter==0:       #Eğer ilk harfte bulunduysa bulunan harf tekrarlaması ihtimaline karşı indexes[] ın başındaki 0 silinir yerine 1 konur Yoksa indexes her seferinde 0 da kalır
                                 indexes.pop()
                                 indexes.append(1)
                                 counter=counter+1
