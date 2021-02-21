@@ -19,8 +19,6 @@ class man():
         indexes.append(0)           #İlk index 0 ile başlatılır (Çünkü aşağıdaki if(*****) için indexes[0] her koşulda 0 olmalı
         
         while hak>0 and success<(len(secret)):        #While başlar hak bitene veya kelime bilinene kadar devam eder.
-            
-    
             print(guesses)
             guess=str(input(f'Kalan hakkınız:{hak} Lütfen tahmin harfinizi yazınız'))    #input harf olarak alınır.
             if(guess in succesful):                                          #Eğer daha önce yazıldıysa while döngüsü başa döner
@@ -41,13 +39,7 @@ class man():
                 else:
                     print("Üzgünüm yanlış harf :(")
                     hak=hak-1
-                   
-                     
-                         
-                            
-                       
-            
-            
+       
         if hak==0:      
             print(f'Kaybettin :( Kelimen : {"".join(secret[:])}')
         else:
