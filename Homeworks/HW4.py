@@ -7,7 +7,7 @@ class man():
         hak=10
         secret=words[rnd.randint(0,len(words)-1)]
     
-        guesses=[]
+        guesses=[]      #Bu liste tahtadaki boşlukları ve harfleri tutar. Yani oyun tahtasını
         for _ in range(len(secret)):
             guesses.append("_")             #Kelime boşluk şeklinde basılır kullanıcının kullandığı tahta oluşturulur
         print("Adam asmaca oyununa hoşgeldin! Hadi oynamaya başla ")
@@ -19,7 +19,7 @@ class man():
         indexes.append(0)           #İlk index 0 ile başlatılır (Çünkü aşağıdaki if(*****) için indexes[0] her koşulda 0 olmalı
         
         while hak>0 and success<(len(secret)):        #While başlar hak bitene veya kelime bilinene kadar devam eder.
-            counter=0
+            
     
             print(guesses)
             guess=str(input(f'Kalan hakkınız:{hak} Lütfen tahmin harfinizi yazınız'))    #input harf olarak alınır.
