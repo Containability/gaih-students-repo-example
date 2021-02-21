@@ -12,7 +12,7 @@ class man():
             guesses.append("_")
         print(guesses[:])
     
-        hak=10
+        hak=6 #Adam asmacada 6 hak vardır
         success=0
         succesful=[]
         indexes=[]
