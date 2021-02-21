@@ -30,17 +30,14 @@ class man():
                 if(guess in secret):        #Eğer tahmin edilen bilindiyse
                     for x in range(secret.count(guess)):    # Tahmin edilen harf kelimede kaç kere tekrarlıyorsa o kadar döngü olur, bu sayede aşağıdaki kod bulunan her konuma harf'i yerleştirir
                     
-                        if  guess==secret[secret.index(guess,indexes[x],len(secret))]:  # ****** Burdaki koşulumuz tahminin (guess) gizli kelime (secret) ın içinde ise bulunması ve tekrar etme durumu için index metodu ile indexes[] listemi kullanarak her birinin konumunu ayrı ayrı bulmasını sağlamak
+                        if(guess==secret[secret.index(guess,indexes[x],len(secret))]):  # ****** Burdaki koşulumuz tahminin (guess) gizli kelime (secret) ın içinde ise bulunması ve tekrar etme durumu için index metodu ile indexes[] listemi kullanarak her birinin konumunu ayrı ayrı bulmasını sağlamak
                             guesses.insert(secret.index(guess,indexes[x],len(secret)),guess)  #Burada bulmaya çalıştığımız kelimedeki harfin bulunduğu index'e koyar, indexes[] ise aynı yere değil her seferinde son bulunan indexten sonraki harfler içinde o harfin bulunmasını sağlar(Eğer bunu yapmazsam her seferinde ilk bulduğu harfe gider ve eğer bir kelimede 1 den fazla kere tekrar ediyorsa tekrar tekrar aynı yere harfi koyar.
                             del guesses[(secret.index(guess,secret.index(guess)+indexes[x],len(secret)))+1] # olan boşluk her seferinde bir sonraki indexe kayacağından o boşluk silinir
                             print("Harika! bir harf buldun")
                             success=success+1   
                             succesful.append(guess)
                             indexes.append(secret.index(guess,indexes[x],len(secret))+1)    #Burada da bulunan harfin index'inden sonraki index indexes[] a koyulur. Bu sayede for döngüsü dönerken bir hafıza oluşturulur ve her tekrarlayan harf durumunda son bulunandan sonraki harflerde arama yapılır. Örnek araba'da 0 indexestedir sonra indexes'a 1 eklenir: indexes[0,1], sonra for döngüsündeki iterasyon 1 dir indexes[1] de 1 vardır ve araba kelimesinde r ve sonrasındaki harflerdeki ilk a aranır.Aynısı bir iterasyon daha tekrarlanır indexes[0,1,3] olur ve harfler yerleşmiş olur
-                            if secret.index(guess)==0 and counter==0:       #Eğer ilk harfte bulunduysa bulunan harf tekrarlaması ihtimaline karşı indexes[] ın başındaki 0 silinir yerine 1 konur Yoksa indexes her seferinde 0 da kalır
-                                indexes.pop()
-                                indexes.append(1)
-                                counter=counter+1
+                            
                 else:
                     print("Üzgünüm yanlış harf :(")
                     hak=hak-1
