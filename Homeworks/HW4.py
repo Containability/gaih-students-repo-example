@@ -10,7 +10,7 @@ class man():
         guesses=[]
         for _ in range(len(secret)):
             guesses.append("_")             #Kelime boşluk şeklinde basılır kullanıcının kullandığı tahta oluşturulur
-        print(guesses[:])
+        print("Adam asmaca oyununa hoşgeldin! Hadi oynamaya başla ")
     
         hak=6               #Adam asmacada 6 yanlış yapma hakkı vardır.
         success=0           #Kaç kere bildiğini tutar
